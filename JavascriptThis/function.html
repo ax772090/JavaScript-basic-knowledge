@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var o1={x:1,y:2};
+		printProps(o1);
+		
+		function printProps(o){
+			for(var p in o){
+				print(p+" "+o[p]);
+			}
+		}
+		
+		
+		function print(msg){
+			document.write(msg);
+			document.write("<br />");
+		}
+	</script>
+</html>

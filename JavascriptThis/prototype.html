@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>prototype原型对象;prototype相关操作符delete、in</title>
+	</head>
+	<body>
+		<!--
+			1、为什么使用原型
+			2、理解原型对象
+			3、什么时候用原型对象
+		-->
+		<script>
+			/*下面这种构造函数的弊端：
+			 
+			 * 对于this.say，每次new一个对象时，都会在堆中开辟一个新的空间，
+			 * */
+			function Person(name,age){
+				this.name=name;
+				this.age=age;
+				this.say=function(){
+					print(this.name);
+				}
+			}
+			var person=new Person("mike",15);
+			var person2=new Person("lucy",15);
+			print(person.say==person2.say);
+			
+			/*如何解决上面的问题----比较low的方式*/
+			function Person2(name,age){
+				this.name=name;
+				this.age=age;
+				this.say=say;
+			}
+			function say(){
+				print(this.name);
+			}
+			var person3=new Person2("mike",15);
+			var person4=new Person2("lucy",15);
+			print(person3.say==person4.say);
+			
+			/*prototype的方式
+			 
+			 * 1、节省内存空间
+			 * 2、扩展自己的方法
+			 * */
+			function Person5(name){
+				this.name=name;
+			}
+			Person5.prototype.age=20;
+			Person5.prototype.say=function(){
+				print(this.name);
+			}
+			var person6=new Person5("mike");
+			var person7=new Person5("lucy");
+			print(person6.say==person7.say);
+			
+			//扩展Array
+			Array.prototype.hello=function(){
+				return "wangxing";
+			}
+			var arr=[];
+			print(arr.hello());
+			
+			/*
+			 * 判断属性是否在prototype上的方法
+			 */
+			function hasPrototypeProperty(object,name){
+				return !object.hasOwnProperty(name)&&(name in object);//判断属性在它自己身上或者在prototype上，并且
+			}
+			
+			function print(msg){
+				document.write(msg);
+				document.write("<br />");	
+			}
+			
+			
+		</script>
+		
+	</body>
+</html>

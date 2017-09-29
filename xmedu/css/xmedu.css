@@ -1,0 +1,120 @@
+*{margin: 0px;padding: 0px;}
+body{
+	font-family: "Microsoft YaHei", 微软雅黑, "Ping Hei", "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif;
+	font-size: 15px;
+	color: rgb(102,102,102);
+	background-color: rgb(255,255,255);
+	overflow: hidden;
+}
+.xmedu_header .header{
+	width: 100%;
+	background: #FFFFFF;
+	border-bottom: 1px solid #CCCCCC;
+	z-index: 999;
+	font-size: 15px;
+	height: 62px;
+
+}
+.xmedu_header .navbar{
+	margin-bottom: 5px;
+}
+.xmedu_header .container-fluid{
+	margin: 0px auto;
+	position: relative;
+	max-width: 1260px;
+}
+.xmedu_header .navbar-header{
+	
+	vertical-align: middle;
+}
+.xmedu_header .navbar-brand{
+	padding: 0px 15px;
+	vertical-align: middle;
+	
+}
+.xmedu_header .xmeduLogo img{
+	height: 60px;
+	border: 0px;
+	vertical-align: middle;
+	padding-bottom: 5px;
+}
+.navbar-collapse{
+	background: #FFFFFF;
+}
+.navbar-collapse li.navli{
+	height: 60px;
+}
+.navbar-collapse li.navli.active .navitem{
+	background: #F7F7F7;
+	border-bottom:2px solid #178fe6 ;
+	font-weight: 600;
+	text-decoration: none;
+	
+}
+
+.loginbtn{
+	margin-top: 5px;
+	border: 1px solid #efefef;
+}
+.loginbtn:hover{
+	border: 1px dashed #efefef;
+}
+
+/****************中间区域*************************/
+.xmedu_main .topic{
+	color: #9FA3A7;
+	margin: 5px 0px;
+	border-bottom: 1px solid #e6eaed;
+	height: 200px;
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+.xmedu_main .topic .imgbox{
+	display: inline-block;
+	max-width: 100%;
+	max-height: 160px;
+	overflow: hidden;
+}
+.xmedu_main .topic .imgbox img{
+	width: 100%;
+	display: block;
+	margin-bottom: 10px;
+	vertical-align: middle;
+}
+
+.topic h1{
+	margin: 0px 0px 10px 0px;
+	font-size: 1.6rem;
+	font-weight: 600;
+}
+.topic h1 a{
+	color: #2c3e51;
+	font-size: 20px;
+	text-decoration: none;
+	line-height: 25px;
+}
+.topic .info{
+	padding: 5px 0px;
+	color: #666;
+	max-height: 65px;
+	overflow: hidden;
+	font-size: 14px;
+}
+.topic .topictags{
+	line-height: 32px;
+	margin-top: 10px;
+	width: 100%;
+	padding-bottom: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.topic .topictags .label-default{
+	color: #FFFFFF;
+	background: #9FA3A7;
+	font-weight: normal;
+	cursor: pointer;
+	margin-right: 5px;
+}
+.topic .topictags .label:hover{
+	background: #f26c23;
+}

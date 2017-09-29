@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>prototype原型链原理及对象继承</title>
+	</head>
+	<body>
+		<script>
+			/*
+			 * 继承：通过原型链的方式实现继承
+			 */
+			function Father(){
+				
+			}
+			Father.prototype={
+				name:"father",
+				say:function(){
+					return this.name;
+				}
+			}
+			function Son1(){
+				this.dance=function(){
+					print("I can dance");
+				}
+			}
+			function Son2(){
+				this.swim=function(){
+					print("I can swim");
+				}
+			}
+			Son1.prototype=new Father();
+			Son2.prototype=new Father();
+			
+			
+			var son1=new Son1();
+			son1.name="jack";
+			print(son1.say());
+			son1.dance();
+			
+			
+			var son2=new Son2();
+			son2.name="mike";
+			print(son2.say());
+			son2.swim();
+			
+			
+			
+			function print(msg){
+				document.write(msg);
+				document.write("<br />");	
+			}
+		</script>
+			
+			
+			
+		
+		
+	</body>
+</html>

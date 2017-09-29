@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+html{
+	font-size: 10px;
+}
+/*3em表示相对于html根元素字体大小的3倍*/
+h1{
+	font-size: 3em;
+}
+/*默认大小为16px，*/
+p{
+	font-size: 1.4em;
+}
+/*code{
+	font-size: 1.1em;//这里是15px,因为em是和父元素挂钩,所以,是14px的1.1倍,就是15px左右
+}*/
+/*code{
+	font-size: 0.786em;这里是11px,但是计算太复杂
+}*/
+code{
+	font-size: 1.1rem;这里是和根挂钩的1.1倍,就是11px
+}
+

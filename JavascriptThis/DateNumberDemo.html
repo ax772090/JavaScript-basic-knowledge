@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date Number</title>
+</head>
+<body>
+<script>
+    var date=new Date();
+    print(date);
+
+    var date1=new Date("2012-12-21 18:18:18");
+    print(date1);
+
+    print(date1.getFullYear()+"年"+(date1.getMonth()+1)+"月"+date1.getDate()+"日");
+
+
+    var num=10;
+    print(num.toString(2));//指定进制，如2进制
+    print(num.toString(8));//指定进制，如8进制
+
+    var num2=10.1561;
+    print(num2.toFixed(2));//保留两位小数
+
+
+    var str="12.22";
+    var result=Number(str)+10;
+    print(result);
+
+    var result2=parseInt(result)+10;
+    var result3=parseFloat(result)+10;
+    print(result2);
+    print(result3);
+
+    function print(msg){
+
+        document.write(msg);
+        document.write("<br>");
+    }
+</script>
+
+</body>
+</html>

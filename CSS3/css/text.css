@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+p{
+	/*1、文本阴影*/
+	
+	/*font-size: 50px;
+	text-shadow: 1px 1px 1px red;*/
+	
+	/*2、文本裁剪*/
+/*	/*
+	width:260px;
+	background-color: silver;
+	white-space: nowrap;
+	overflow: hidden;
+	/*text-overflow: clip;*/
+	/*text-overflow: ellipsis;*/
+	
+	/*3、文本描边效果*/
+	/*font-size: 80px;
+	-webkit-text-stroke: 1px red;
+	-webkit-text-stroke-width:3px;*/
+	
+	/*4、文本填充*/
+	font-size: 80px;
+	font-family: "黑体";
+	-webkit-text-fill-color:orange;
+	
+}
+

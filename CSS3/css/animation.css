@@ -1,0 +1,38 @@
+@charset "utf-8";
+body{
+	margin: 100px;
+}
+div{
+	width: 200px;
+	height: 200px;
+	border: 1px solid green;
+	box-shadow: 2px 2px 2px 2px gray;
+	background-color: white;
+	
+	/*动画*/
+	animation-name: myani;
+	animation-duration: 1s;
+	/*循环次数*/
+	animation-iteration-count: 2;
+	
+}
+@keyframes myani{
+	/*from{
+		background-color: white;
+		margin-left: 0px;
+	}
+	to{
+		background-color: black;
+		margin-left: 100px;
+	}*/
+	
+	
+	0%,100%{
+		background-color: white;
+		margin-left: 0px;
+	}
+	50%{
+		background-color: black;
+		margin-left: 100px;
+	}
+}

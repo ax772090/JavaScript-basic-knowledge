@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>基本类型和应用类型内存原理分析</title>
+	</head>
+	<body>
+		<script>
+			/*每次new一个对象，都会开辟一个新的堆空间*/
+			var name="Michael";
+			var name2=name;
+			var name2="Jack";
+			print(name);
+			
+			//引用类型
+			function Person(){
+				
+			}
+			var person=new Person();
+			person.name="Michael";
+			var person2=person;
+			person2.name="Jack";
+			print(person.name);
+			//
+			person2.age=10;
+			print(person.age);
+			
+			
+			var person3=new Person();
+			person3.name="Lucy";
+			
+			
+		
+			function print(msg){
+				document.write(msg);
+				document.write("<br />");
+				
+			}
+		
+		</script>
+		
+		
+	</body>
+</html>

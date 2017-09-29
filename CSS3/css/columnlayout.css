@@ -1,0 +1,19 @@
+@charset "utf-8";
+body{
+	-webkit-columns: 120px 3;
+	/*前边是每列的宽度,如果设置了列数，则直接按列数来*/
+	/*columns: auto 3;*/
+	column-count: 4;
+	/*设置列之间的间距*/
+	column-gap: 50px;
+	/*设置列之间的分割线*/
+	column-rule: 2px dashed gray;
+	/*设置跨列大标题*/
+	column-span: all;
+	
+}
+h1{
+	/*设置跨列大标题*/
+	column-span: all;
+	text-align: center;
+}

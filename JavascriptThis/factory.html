@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>构建对象的方式：工厂模式构建对象，构造函数模式</title>
+	</head>
+	<body>
+		<script>
+			//工厂模式创建对象
+			function createPerson(name,age){
+				var person=new Object();
+				person.name=name;
+				person.age=age;
+				person.say=function(){
+					return "My name is "+this.name+" , "+"我今年 "+this.age+"岁了";
+				}
+				return person;
+			}
+			
+			var person1=createPerson("小明",16);
+			var person2=createPerson("小强",18);
+			print(person1.say());
+			print(person2.say());
+			
+			//构造函数模式
+			
+			function Person(name,age){
+				this.name=name;
+				this.age=age;
+				this.say=function(){
+					return "My name is "+this.name+" , "+"我今年 "+this.age+"岁了";
+				}
+			}
+			var person3=new Person("小花",13);
+			var person4=new Person("小岩",14);
+			print(person3.say());
+			print(person4.say());
+			
+			
+			//另外一种形式，不用new的方式，会直接赋值到根上，即window上
+			Person("小王",18);
+			print(age);
+			print(window.name);//window可以省略不写
+			
+			
+			
+			
+			
+			
+			
+			function print(msg){
+				document.write(msg);
+				document.write("<br />");
+			}
+			
+		</script>
+	</body>
+</html>

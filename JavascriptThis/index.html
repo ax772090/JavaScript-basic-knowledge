@@ -1,0 +1,65 @@
+<script>
+	/*
+	 * 公有属性和公有函数
+	 */
+	function Person(){
+		this.name="mike";//公有属性
+		
+	}
+	//公有函数、原型方法
+	Person.prototype.say=function(){
+		return this.name;
+	}
+	var person=new Person();//var person={};
+	print(person.name);
+	print(person.say());
+	
+	print("------------------");
+	function Person2(){
+		var name="lucy";//私有属性
+		function say(){//私有函数
+			return name;
+		}
+	}
+	var person2=new Person2();
+	print(person2.name);
+	
+	print("-----------------");
+	
+	function Person3(){
+		var name="lucy";//私有属性
+		function say(){//私有函数
+			return name;
+		}
+		this.speak=function(){//这种叫"特权"函数，这样外界就可以访问内部的属性了
+			return name;
+		}
+	}
+	var person3=new Person3();
+	print(person3.speak());
+	print("---------------------");
+	
+	
+	/*
+	 * 静态属性和静态函数
+	 */
+	function Person4(){
+		
+	}
+	Person4.age=10;
+	Person4.say=function(){
+		return this.age;
+	}
+	print(Person4.say());
+	
+	
+	
+	
+	function print(msg){
+		document.write(msg);
+		document.write("<br />");
+	}
+	
+	
+	
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>值传递和引用传递的内存分析原理</title>
+	</head>
+	<body>
+		<script>
+			//值传递
+			var num=10;
+			process(num);//值传递
+			print(num);
+			
+			function process(num){
+				 num++;
+			}
+			
+			//引用传递
+			var person=new Object();
+			person.age=10;
+			process2(person);
+			print(person.age);
+			
+			function process2(person){
+				person.age++;
+			}
+			
+			
+			//升级版----引用传递
+			var person3=new Object();
+			person3.age=10;
+			process3(person3);
+			print(person3.age);
+			
+			function process3(person){
+				person.age=20;
+				person=new Object();
+				person.age=100;
+			}
+			
+			
+			//再次升级版----就想用process4里面的100，怎么搞？
+			var person4=new Object();
+			person4.age=10;
+			person4=process4(person4);
+			print(person4.age);
+			
+			function process4(person){
+				
+				person=new Object();
+				person.age=100;
+				return person;
+			}
+			
+			
+			function print(msg){
+				document.write(msg);
+				document.write("<br />");
+				
+			}
+		
+			
+		</script>
+	</body>
+</html>

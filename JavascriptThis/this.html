@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>this的使用</title>
+	</head>
+	<body>
+		<script>
+			//全局中使用
+			var name="mike";
+			print(this.name);//this->window可以不写
+			print("---------------");
+			
+			//函数中
+			function say(){
+				var name="jack";
+				print(this.name);
+			}
+			say();//这个函数是由window对象来调用的，所以this指向window
+			
+			
+			function Person(){
+				var name="lucy";
+				this.say=function(){
+					print("person:"+name);
+					print("person:"+this.name);
+						
+				}
+			}
+			print("---------------");
+			var person=new Person();
+			person.say();
+			
+			
+			
+			
+			function Person2(){
+				this.name="lucy";
+				this.say=function(){
+					print("person:"+name);
+					print("person:"+this.name);
+				}
+			}
+			print("---------------");
+			var person2=new Person2();
+			person2.say();
+			person2.name="lily";
+			person2.say();
+			
+			
+			function Person3(){
+				var name="lucy";
+				this.name="lucy2";
+				this.say=function(){
+					print("person:"+name);
+					print("person:"+this.name);
+				}
+			}
+			print("---------------");
+			var person3=new Person3();
+			person3.say();
+			
+			
+			print("---------------");
+			function Person4(){
+				//this.name="lucy";
+				this.say=say;
+			}
+			var person4=new Person4();
+			person4.say();
+			
+			
+			function print(msg){
+				document.write(msg);
+				document.write("<br />");
+				
+			}
+			
+		</script>
+	</body>
+</html>

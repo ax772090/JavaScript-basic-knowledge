@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>垃圾回收：1、标记清除；2、引用计数；3、手工解除引用</title>
+	</head>
+	<body>
+		<script>
+			/*1、标记的方式*/
+			var a=new Object();
+			function process(){
+				var b=new Object();
+			}
+			process();
+			
+			
+			
+			/*2、引用计数
+			 
+			 * 采用这种计数的方式进行
+			 * */
+			var c=new Object();//1
+			var c1=c;//2
+			var c2=c;//3
+			//如果要释放，则使用下面的方式
+			c=null;
+			
+			
+			
+			/*3、手工解除引用*/
+			
+			var person=new Object();
+			
+			person=null;//这种方式实现垃圾回收
+			
+			
+		</script>
+	</body>
+</html>

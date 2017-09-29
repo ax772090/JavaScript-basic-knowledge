@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>一些this的面试题</title>
+	</head>
+	<body>
+		<script>
+			//1、普通函数的this指向
+			/*
+			 * 如果没有实例化对象,this永远指向window
+			 */
+			/*这里面有些this的测试题
+			 * http://www.68kejian.com/page/study/course/80/469?name=undefined
+			 */
+			function person(data){
+				this.data=data;
+				return this;//这个返回的是window对象
+			}
+			var person1=person(5);//此时的person1为Window对象
+			var person2=person(6);//此时的person2为Window对象
+			print(person1.data);
+			print(person2.data);
+			
+			print("------------------");
+			 var a = "1";
+		     function demo() {
+		        var a = "2";
+		        print(this.a);
+		    }
+		    new demo();
+		    demo.a=3;
+		    demo();
+		    
+			print("------------------");
+			/*函数内部声明的变量，如果不使用 var声明的，变量就会提升到 window作用域*/
+			function demo1() {
+		        a = "2";
+		        this.a = "11";
+		        print(a);
+		
+		    }
+		    demo1();
+		    print(a);
+			
+			//2、面向字面量对象中的this
+			/*
+			 * 面向字面量对象是一个特殊的对象，内部函数已经帮助我们通过 new Object()实例化了字面量对象，
+			 * 所以，我们在使用的时候不需要再次实例化了。
+			 */
+			print("------------------");
+			 	var age=12;
+			    var people={
+			        age:24,//这里相当于this.age=24;
+			        sayAge:function () {
+			
+			            return age;
+			        },
+			        sayAge1:function  () {
+			            return this.age;
+			        }
+			    };
+			      print(people.sayAge());//12
+			      print(people.sayAge1());//24
+			/*
+			 * 闭包中的this
+			 * this永远指向的是调用它的对象，我们虽然通过people.sayAge()()，调用了sayAge()方法，
+			 * 但是因为sayAge() 方法返回的是一个函数，然后我们在执行返回的函数，这就不是对象的调用了，只是普通函数的运行，
+			 * 之前我们说过，普通函数的this永远指向window。所以，innerAge()中的this==window.
+			 * */
+			print("------------------");
+			var age1=12;
+		    var people1={
+		        age1:24,
+		        sayAge:function () {
+		            function innerAge() {
+		            	
+		                return this.age1;
+		            }
+		            return innerAge;
+		        },
+		        sayAge1:function  () {
+		            return this.age1;
+		        }
+		    };
+		
+		 	print(people1.sayAge()());//12
+		 	
+			/*
+			 * 如果我们想使用people1的age1，可以把上面的代码修改为：
+			 * */
+			print("------------------");
+			var age2=12;
+		    var people2={
+		        age2:24,
+		        sayAge:function () {
+		        	var that=this;//这里使用that引用this的方式
+		            function innerAge() {
+		            	
+		                return that.age2;
+		            }
+		            return innerAge;
+		        },
+		        sayAge1:function  () {
+		            return this.age2;
+		        }
+		    };
+		
+		 	print(people2.sayAge()());
+			
+			/*
+			 * 多个对象嵌套中的this
+			 */
+			
+			print("------------------");
+			var o = {
+			    aa:10,
+			    b:{
+			        a:12,
+			        fn:function(){
+			            print(this.aa); //undefined
+			            print(this); //window      
+			     }
+			    }
+			}
+			var j = o.b.fn;
+			j();
+			
+			/*
+			 * 3、构造函数中的this
+			 * 如果构造函数返回值是一个对象，那么this指向的就是那个返回的对象，
+			 * 如果返回值不是一个对象那么this还是指向函数的实例。
+			 */
+			print("------------------");
+			
+			var age3 = 12;
+		    function people3() {
+		        age3=50;
+		        this.age3=24;
+		        
+		    }
+		    //这是静态方法
+		    people3.sayAge1=function(){
+		       print(age3);
+		    }
+		    people3.prototype.sayAge = function () {
+		        return this.age3;
+		    }
+		    var p=new people3();
+		    print(p.sayAge());//24
+		
+			/*
+			 * 静态方法中的this(利用的还是people3)
+			 * 静态的方法是不用对象调用的，而是使用类名来访问，所以根本就没有对象存在，也就没有this这个引用了，
+			 */
+			print("------------------");
+			print(people3.prototype.sayAge());
+			people3.sayAge1();
+			//p.sayAge1();
+			
+			/*
+			 * 4、JavaScript的this头脑风暴
+			 */
+			
+			print("------------------");
+			
+			
+			/* function p(num){
+		        this.x = num;
+		        return this;
+		    };
+		    var xx = p(5);
+		    var y = p(6);
+			print(xx.x);
+		    print(y.x);*/
+			
+			function cat(name,age){
+					this.name=name;
+					this.age=age;
+					this.bark=function(){
+						print('i am '+this.name);
+					}
+				}
+				var cat=new cat('huzi',2);
+				cat.bark();//i am huzi
+				
+				
+				
+				function pig(){
+					this.age=99;
+					return 'abc';
+				}
+				
+				var pig=new pig();
+				print(pig);//pig对象
+				
+				print("--------------------------");
+				
+				name = 'this is window';
+			    var obj1 = {
+			        name: 'php',
+			        t: function() {
+			            print(this.name)
+			        }
+			    };
+			    var dog1 = {
+			        name: 'huzi'
+			    };
+			
+			    obj1.t();//php
+			
+			    dog1.t = obj1.t;
+			
+			    var tmp = dog1.t;
+			    tmp(); //this本来指向window//this is window
+			
+			    (dog1.t = obj1.t)();//this is window
+			    dog1.t.call(obj1);//php
+				print("--------------------------");
+				
+				
+				
+				
+				
+				
+			
+			
+			
+			function print(msg){
+				document.write(msg);
+				document.write("<br />");
+				
+			}
+		</script>
+	</body>
+</html>

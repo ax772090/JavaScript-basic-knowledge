@@ -1,0 +1,48 @@
+<script>
+	function createArr(){//func1
+		var arr=[];
+		for(var i=0;i<10;i++){
+			arr[i]=function(){//func2
+				return i;
+			}
+		}
+		return arr;
+	}
+	var arr=createArr();
+	for(var i in arr){
+		print(arr[i]());
+	}
+	
+	
+	print("-----------------------");
+	
+	function createArr2(){//func1
+		var arr=[];
+		for(var i=0;i<10;i++){
+			arr[i]=function(num){//func2----//func1
+				return function(){//func2
+					return num;
+				};
+			}(i);//直接执行
+		}
+		return arr;
+	}
+	var arr2=createArr2();
+	for(var i in arr2){
+		print(arr2[i]());
+	}
+	
+	
+	
+	
+	
+	function print(msg){
+	document.write(msg);
+	document.write("<br />");
+	}
+	
+	
+	
+	
+	
+</script>

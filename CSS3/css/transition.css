@@ -1,0 +1,23 @@
+@charset "utf-8";
+body{
+	margin: 100px;
+}
+div{
+	width: 200px;
+	height: 200px;
+	border: 1px solid green;
+	box-shadow: 2px 2px 2px 2px gray;
+	background-color: white;
+	/*transition-property: all;*/
+	/*transition-property: background-color;*/
+	/*transition-duration: 1s;*/
+	
+	
+	/*下面这种方式更加简单*/
+	transition: all 1s ease 0s;
+}
+div:hover{
+	background-color: black;
+	color: white;
+	margin-left: 100px;
+}

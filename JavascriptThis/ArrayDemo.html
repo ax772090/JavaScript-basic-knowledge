@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var arr1=new Array();//var arr1=[];
+    arr1.push(10);
+    arr1.push(13);
+	for(var i=0;i<arr1.length;i++){
+		print(arr1[i]);
+	}
+	print("*********************************");
+    var arr2=new Array("aa",123,"fsadf");
+
+    arr2[1]="dd";
+    for(var i=0;i<arr2.length;i++){
+		print(arr2[i]);
+	}
+	print("*********************************");
+
+
+
+    if(arr2 instanceof Array){
+        print("arr2 "+"is Array");
+    }
+	print("*********************************");
+
+	/*
+	 * concat拼接数组
+	 */
+    var arrA=[1,2,3];
+    var arrB=[4,5,6];
+    var arrC=arrA.concat(arrB);//拼接
+    for(var i=0;i<arrC.length;i++){
+		print(arrC[i]);
+	}
+	print("*********************************");
+
+	/*
+	 * slice截取数组
+	 */
+    var arrD=[1,2,3,4,5,6];
+    var arrE=arrD.slice(0,3);//截取
+    var arrEE=arrD.slice(-3);
+    print(arrE);
+    print("*********************************");
+	 print(arrEE);
+	 print("*********************************");
+    /*splice
+    * 第一个参数表示：索引
+    * 第二个参数表示：从索引的位置删除几个元素，如果是0，则不删除，后面直接用第三个参数的元素添加；
+    * 如果是1，则删除索引位置元素，用后面的参数三元素替代
+    * */
+    var arrEEE=[1,2,3,4,5,6];
+    arrEEE.splice(2,2,"abc");//————重要—————请注意，splice() 方法与 slice() 方法的作用是不同的，splice() 方法会直接对数组进行修改。
+	 print(arrEEE);
+	 print("*********************************");
+	
+	/*
+	 * sort排序
+	 */
+    var arr4=[4,8,"bb",9,6,2,"aa"];
+    /*arr4.sort(function(num1,num2){
+       return num1-num2;
+    });*/
+	 print(arr4.sort());
+	 print("*********************************");
+
+	/*
+	 * reverse转置
+	 */
+    var arr5=[1,2,3,7];
+    print(arr5.reverse());
+	print("*********************************");
+
+
+    //队列  栈
+    var arr6=[];
+    arr6.push("aaa");
+    arr6.push("bbb");
+    arr6.push("ccc");
+	/*
+	 * shift用于把数组的第一个元素从其中删除，并返回删除的第一个元素的值。
+	 */
+    var item=arr6.shift();//先push进去的先拿出来,队列思想
+    print(item);
+	print("*********************************");
+	print("arr6剩余的值 "+arr6);
+	print("*********************************");
+	
+	/*
+	 * pop() 方法用于删除并返回数组的最后一个元素。
+	 */
+    var item2=arr6.pop();//栈的思想
+    print("item2 "+item2);
+	print("*********************************");
+	print("arr6剩余的值  "+arr6);
+	print("*********************************");
+
+	/*
+	 * every() 方法用于检测数组所有元素是否都符合指定条件（通过函数提供）。
+	every() 方法使用指定函数检测数组中的所有元素：
+	如果数组中检测到有一个元素不满足，则整个表达式返回 false ，且剩余的元素不会再进行检测。
+	如果所有元素都满足条件，则返回 true。
+	注意： every() 不会对空数组进行检测。
+	注意： every() 不会改变原始数组。
+	 */
+    var arr9=["hello","hill","michael","lucy"];
+    var result=arr9.every(function(item,index,array){
+        return item.indexOf("l")>-1;
+    });
+    print("result "+result);
+	print("*********************************");
+
+	/*
+	 * filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+	 * 过滤掉一些不符合条件的
+	 */
+    var arr10=["hello","hi","michael","lucy"];
+    var result1=arr10.filter(function(item,index,array){
+        return item.indexOf("l")>-1;
+    });
+ 	print("result1 "+result1);
+	print("*********************************");
+	
+	/*
+	 * 转化成map格式的（key:value）
+	 */
+    var arr11=["hello","hi","michael","lucy"];
+    var result2=arr11.map(function(item,index,array){
+        return "name: "+item;//给前面添加东西
+    });
+    print("result2 "+result2);
+	print("*********************************");
+    
+	/*
+	 * forEach的用法
+	 */
+    var arr12=["hello","hi","michael","lucy"];
+    var result=arr12.forEach(function(item,index,array){
+        print(index+":"+item);
+    });
+	print("*********************************");
+	
+	
+    function print(msg){
+
+        document.write(msg);
+        document.write("<br>");
+    }
+</script>
+</body>
+</html>

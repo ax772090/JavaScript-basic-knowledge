@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>闭包问题</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 * 1、闭包需要解决的问题
+		 * 答：想在一个作用域里边访问原来它访问不到的作用域里边的属性（同级之间作用域里面的属性不能互相访问），
+		 * 此时就需要闭包来解决
+		 * */
+		function createCompareFunction(name){//func1  比较函数  这个name作用域是func1，所以func2也能访问到    
+			return function(obj1,obj2){//func2
+				var col1=obj1[name];
+				var col2=obj2[name];
+				if(col1-col2>0){
+					return ">";
+				}else if(col1-col2<0){
+					return "<";
+				}else{
+					return "=";
+				}
+			}
+		}
+		var compare=createCompareFunction("");
+		var result=compare(
+			{name:"mike",age:10,height:180},
+			{name:"jack",age:12,height:170}
+		);
+		print(result);
+		
+		
+		
+		function print(msg){
+		document.write(msg);
+		document.write("<br />");
+		}
+	
+	
+	</script>
+</html>

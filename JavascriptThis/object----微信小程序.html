@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>结合微信小程序更加深入理解Person("xxx",xx);这种形式的构造函数</title>
+	</head>
+	<body>
+		<view bindTap="showInfo">click me</view>
+		<script>
+			function Page(obj){
+				this.execute=function(methodName){
+					return obj[methodName];
+				}
+				
+			}
+			Page({
+				showInfo:function(){
+					alert(1111);
+				}
+			});
+			
+			var views=document.getElementsByTagName("view");
+			for(var i=0;i<views.length;i++){
+				var view=views.item(i);
+				var methodName=view.getAttribute("bindTap");
+				view.onclick=execute(methodName);
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

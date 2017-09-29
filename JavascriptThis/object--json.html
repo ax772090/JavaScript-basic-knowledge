@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对象和json之间的转换</title>
+	</head>
+	<body>
+		<textarea id="ta1" rows="20" cols="50"></textarea>
+		<textarea id="ta2" rows="20" cols="50"></textarea>
+		<textarea id="ta3" rows="20" cols="50"></textarea>
+		
+		<textarea id="ta4" rows="20" cols="50" placeholder="请输入JSON结构的数据"></textarea>
+		<textarea id="ta5" rows="20" cols="50" ></textarea>
+		
+		<br />
+		<button onclick="printInfo()">转数据</button>
+		
+		<script>
+			//转JSON
+			var person=new Object();//{}
+			person.name="jack";
+			person.age=20;
+			person.isSingleDog=true;
+			person.say=function(){
+				return "hello";
+			}
+			/*转出JSON结构*/
+			var str1=JSON.stringify(person);
+			document.getElementById("ta1").value=str1;
+			
+			/*格式化JSON*/
+			var str2=JSON.stringify(person,null,4);
+			document.getElementById("ta2").value=str2;
+			
+			/*中间那个参数是过滤功能JSON*/
+			var str3=JSON.stringify(person,["name","age"],4);
+			document.getElementById("ta3").value=str3;
+			
+			
+			//JSON转对象
+			function printInfo(){
+				var info=document.getElementById("ta4").value;
+				var obj=JSON.parse(info);
+				
+				
+				if(obj instanceof Array){
+					for (var i in obj) {
+						for (var j in obj[i]) {
+							showTa5(j+":"+obj[i][j]);
+							
+						}
+						
+					}
+				}else{
+					for(var i in obj){
+						//print(i+":"+obj[i]);
+						showTa5(i+":"+obj[i]);
+					}
+				}
+			};
+			function showTa5(msg){
+				var str=document.getElementById("ta5").value;
+				document.getElementById("ta5").value=str+"\n"+msg;
+			
+			}
+			/*function print(msg){
+				document.print(msg);
+				document.print("<br>");
+			}
+			*/
+		</script>
+		
+	</body>
+</html>

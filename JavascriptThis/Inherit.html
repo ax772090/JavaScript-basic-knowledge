@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var o={};
+		o.x=1;
+		var p=inherit(o);//p继承o的属性
+		print(p.x);
+		print("--------------------");
+		p.x=2;//这个继承的x属性被新创建的同名属性覆盖了（p覆盖继承而来的属性x）
+		print(p.x);
+		print(o.x);//原型对象没有修改
+		
+		
+		function inherit(p){//继承函数
+			function f(){};
+			f.prototype=p;
+			return new f();
+		}
+		function print(msg){
+			document.write(msg);
+			document.write("<br />");
+		}
+	</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对this2的第二次改装</title>
+	</head>
+	<body>
+		<script>
+			var data;
+			var util=new Util();
+			var cb=function(data){
+				this.data=data;
+			}
+			util.process("www.wx.com",cb);
+			print("window:"+data);
+			print("util:"+util.data);
+			
+			
+			
+			function Util(){
+				this.process=function(url,callback){
+					if(url="www.wx.com"){
+						
+						this.cb=callback;
+						
+						this.cb("这是阿星的网站");
+					}else{
+						this.cb=callback;
+						this.cb("no data");
+					}
+				}
+			}
+			
+			
+		
+			function print(msg){
+				document.write(msg);
+				document.write("<br />");
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

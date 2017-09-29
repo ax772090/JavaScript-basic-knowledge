@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+	
+		/*
+		 * call方法语法：call(thisObj，Object)
+		 * apply方法语法：apply(thisObj，[argArray])
+		 */
+		function cat(){
+			
+		}
+		cat.prototype={
+			food:"fish",
+			say:function(){
+				alert("I love "+this.food);
+			}
+		}
+		
+		var blackCat=new cat();
+		blackCat.say();
+		/*
+		 *为什么用call和apply？
+		 * 如果我们有一个对象whileDog={food:"bone"},我们不想重新定义say方法，想用cat里面的方法，那么就可以用
+		 * blackCat的say方法，如：blackCat.say.call(whileDog);
+		 */
+		var whileDog={food:"bone"};
+		blackCat.say.call(whileDog);
+	</script>
+</html>

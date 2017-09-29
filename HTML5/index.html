@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="wangxing" />
+		<meta name="keywords" content="h5,js" />
+		
+		
+		<title>HTML5新特性</title>
+	</head>
+	<body>
+		<p>video 元素支持三种视频格式：</p>
+		<ol>
+			<li>Ogg = 带有 Theora 视频编码和 Vorbis 音频编码的 Ogg 文件</li>
+			<li>MPEG4 = 带有 H.264 视频编码和 AAC 音频编码的 MPEG 4 文件</li>
+			<li>WebM = 带有 VP8 视频编码和 Vorbis 音频编码的 WebM 文件</li>
+		</ol>
+		<ul>
+			<li>哈哈哈哈</li>
+			<li>哈哈哈哈</li>
+			
+		</ul>
+		<!--这种方式能够兼容各个浏览器-->
+		<video width="320" height="240" controls="controls">
+		  <source src="video/鸭子.ogg" type="video/ogg">
+		  <source src="video/鸭子.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+		</video>
+		<hr />
+		
+		<form id="register" autocomplete="on"><!--autocomplete默认值为on-->
+			<fieldset id="">
+				<legend>注册分组</legend>
+				<label for="user">用户名</label>
+				<input id="user" name="user" /><br />
+				密码：<input name="password" />
+				
+			</fieldset>
+			
+			<textarea name="content">textarea请留下你的建议！</textarea>
+			
+			
+			<button>提交</button>
+		</form>
+		<!--这里使用form属性：让表单外的元素和指定的表单挂钩-->
+		电子邮件：<input name="email" form="register" />
+		<hr />
+		<p>canvas实例</p>
+		<canvas id="myCanvas1" width="200" height="100"></canvas>
+		<canvas id="myCanvas2" width="200" height="100" style="border:1px solid #c3c3c3;">
+		Your browser does not support the canvas element.
+		</canvas>
+		
+		<hr />
+		<p>svg实例</p>
+		
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+		  <polygon points="100,10 40,180 190,60 10,60 160,180"
+		  style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+		</svg>
+		<hr />
+		<p>HTML5 提供了两种在客户端存储数据的新方法：</p>
+		<ol>
+			<li>localStorage---没有时间限制的数据存储</li>
+			<li>sessionStorage---针对一个 session 的数据存储</li>
+		</ol>
+		<div id="local1"></div>
+		<div id="local2"></div>
+		<p>刷新页面会看到计数器在增长。</p>
+
+		<p>请关闭浏览器窗口，然后再试一次，计数器会继续计数。</p>
+		<hr />
+		<div id="session1"></div>
+		<p>刷新页面会看到计数器在增长。</p>
+
+		<p>请关闭浏览器窗口，然后再试一次，计数器已经重置了。</p>
+		
+		<script type="text/javascript">
+			//这是对于canvas的
+			var c1=document.getElementById('myCanvas1');
+			var cxt1=c1.getContext("2d");//创建context对象
+			cxt1.fillStyle="#FF0000";
+			cxt1.fillRect(0,0,150,75); 
+			
+			
+			var c2=document.getElementById('myCanvas2');
+			var cxt2=c2.getContext("2d");//创建context对象
+			cxt2.fillStyle="#FF0000";
+			cxt2.beginPath();
+			cxt2.arc(70,18,15,0,Math.PI*2,true);
+			cxt2.closePath();
+			cxt2.fill();
+			
+			//这是对于localStorage和sessionStorage
+			// Check browser support
+			if (typeof(Storage) !== "undefined") {
+			    // Store
+			    localStorage.setItem("lastname", "Gates");
+			    // Retrieve
+			    document.getElementById("local1").innerHTML = localStorage.getItem("lastname");
+			} else {
+			    document.getElementById("local1").innerHTML = "抱歉！您的浏览器不支持 Web Storage ...";
+			}
+			
+			if (localStorage.pagecount){
+				localStorage.pagecount=Number(localStorage.pagecount) +1;
+			}
+			else{
+				localStorage.pagecount=1;
+			}
+			document.getElementById("local2").innerHTML ="localStorage次数："+localStorage.pagecount;
+			
+			
+			
+			if (sessionStorage.pagecount){
+				sessionStorage.pagecount=Number(sessionStorage.pagecount) +1;
+			}
+			else{
+				sessionStorage.pagecount=1;
+			}
+			document.getElementById("session1").innerHTML ="sessionStorage次数："+sessionStorage.pagecount;
+		</script>
+	</body>
+</html>

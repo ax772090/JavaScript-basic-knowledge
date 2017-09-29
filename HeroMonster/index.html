@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>英雄打怪</title>
+		<script type="text/javascript" src="js/util.js"></script>
+		<script type="text/javascript" src="js/Hero.js"></script>
+		<script type="text/javascript" src="js/Monster.js"></script>
+		
+	</head>
+	<body>
+		<button onclick="heroInfo()">显示英雄属性</button>
+		<button onclick="doFight()">打怪去</button>
+		
+		<div id="showInfo"></div>
+		<script>
+			
+			var hero=createHero({
+				level:1,
+				exp:0,
+				minAttack:3,
+				maxAttack:5,
+				minDefend:1,
+				maxDefend:2,
+				blood:500
+				
+			});
+		/*var monster=createMonster({
+				
+				minAttack:1,
+				maxAttack:4,
+				blood:10	
+			});*/
+		
+
+			function heroInfo(){
+				print("等级："+hero.level);
+				print("经验："+hero.exp);
+				print("攻击："+hero.minAttack+"～"+hero.maxAttack);
+				print("防御："+hero.minDefend+"～"+hero.maxDefend);
+				print("血量："+hero.blood);
+				print("-----------------");	
+				
+			}
+			
+			function findMonster(){
+				var attack=getRandom(10);
+				var monster=createMonster({
+					
+					minAttack:1+attack,
+					maxAttack:4+attack,
+					blood:getRandom(30)
+				});
+				return monster;
+			}
+			
+			function doFight(){
+				var monster=findMonster();//是为了让英雄打完一个怪物继续打下一个
+				var exp=monster.blood;
+				while(true){
+					print("怪物血量："+monster.blood);
+					hero.attackMonster(monster);
+					if(monster.hasDie){
+						hero.addExp(exp);//妖怪死后就可以增加经验了
+						print("胜利啦");
+						print("---------------------");
+						break;
+					}
+					
+					print("英雄血量："+hero.blood);
+					monster.attackHero(hero);
+					if(hero.hasDie){
+						print("打怪失败");
+						break;
+					}
+				}
+				
+				
+			}
+			
+			function print(msg){
+				var showInfo=document.getElementById("showInfo");
+				var p=document.createElement("p");
+				p.innerHTML=msg;
+				//showInfo.appendChild(p);
+
+				var firstChild=showInfo.firstChild;
+				showInfo.insertBefore(p,firstChild);
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

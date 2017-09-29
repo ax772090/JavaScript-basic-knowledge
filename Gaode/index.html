@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-cn">
+	<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+	<title>Demo</title>
+	</head>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/gaode.css" />
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=6ffcdef1da6d8e14f52760718b04fb39"></script>
+	
+	<!--<script type="text/javascript" >
+		var map=new AMap.Map('container',{
+				resizeEnable:true,
+				keyboardEnable:true
+});-->
+	</script>
+	<body>
+		<div id="container"></div>
+		<div id="tip"></div>
+		<div class="close icon" onclick="javascript:handleButtonCloseClick()"></div>
+		<div id="overview"></div>
+		<div class="col-sm-2 search">
+            <div class='input-group' >
+                <input type='text' class="form-control" name="keywords" id="keywords" placeholder="关键词搜索" required/>
+                <span class="input-group-addon">
+                    <span id="search" class="glyphicon glyphicon-search" onclick="serchKeywords();"></span>
+                </span>
+            </div>
+        </div>
+        <!--<div id="myPageTop">-->
+		<div class="lnglatquery">
+			 <div class="form-group">
+				<label class="col-sm-1 control-label">经度：</label>
+				<div class="col-sm-4">
+					<input class="form-control" id="lng" autocomplete="on"/>
+				</div>
+				<label class="col-sm-1 control-label">纬度：</label>
+				<div class="col-sm-4">
+					<input class="form-control" id="lat" autocomplete="on"/>
+				</div>
+				<div class="col-sm-2">
+					<button class="btn btn-info" id="reverseBtn" onclick="gpsToGcj02();">转换</button>
+				</div>
+				
+			</div>
+			
+		</div>
+			
+		<button class="btn btn-primary" id="traffic">显示/隐藏实时路况</button>
+		<button class="btn btn-primary active" id="googleLayer" >叠加/移除谷歌地图</button>
+		<div class="leftbottom" id="lnglat"></div>
+	</body>
+	<script type="text/javascript" src="js/coordTransform.js"></script>
+	<script type="text/javascript" src="js/gaode.js"></script>
+
+  	<!--<script type="text/javascript" src="http://webapi.amap.com/demos/js/liteToolbar.js"></script>-->
+</html>

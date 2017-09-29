@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var obj = {
+				x: 1,
+				y: 2,
+				t: function() {
+					console.log(this.x)
+				}
+			}
+			obj.t();//1
+			
+			var dog={x:11};
+			dog.t=obj.t;
+			dog.t();//11
+			
+			
+			show=function(){
+				console.log('show'+this.x);
+			}
+			
+			dog.t=show;
+			dog.t();//11
+			
+		</script>
+	</body>
+</html>

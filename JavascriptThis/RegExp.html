@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式练习</title>
+	</head>
+	<body>
+		<script>
+			/*1位字母开头 后面是数字 总共12位*/
+			var patt1=new RegExp("^[A-Za-z][0-9]{11}$");
+			document.write(patt1.test("a11111111111"));
+		</script>
+	</body>
+</html>

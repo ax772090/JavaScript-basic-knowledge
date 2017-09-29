@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数据属性writable,value,configurable,enumerable;set和get方法的使用</title>
+	</head>
+	<body>
+		<script>
+			var person=new Object();//{}
+			person.name="jack";
+			person.age=20;
+			person.isSingleDog=true;
+			
+			for(var i in person){
+				print(i+": "+person[i]);
+			}
+			print("---------------------------");
+			
+			person.name="xiaomu";
+			for(var i in person){
+				print(i+": "+person[i]);
+			}
+			print("---------------------------");
+			
+			/*下面使用writable禁止修改属性值*/
+			Object.defineProperty( person, 'name', {
+				writable: false
+				});
+			person.name="xiaoshabi";
+			for(var i in person){
+				print(i+": "+person[i]);
+			}
+			print("---------------------------");
+			
+			/*下面使用value修改属性的值*/
+			Object.defineProperty( person, 'name', {
+				value:"mayun"
+			});
+			for(var i in person){
+				print(i+": "+person[i]);
+			}
+			print("---------------------------");
+			
+			
+			/*enumerable表示能否通过for-in循环返回属性*/
+			Object.defineProperty( person, 'name', {
+				enumerable:false
+			});
+			for(var i in person){
+				print(i+": "+person[i]);
+			}
+			print("---------------------------");
+			
+			
+			/*configurable表示控制属性是否可以进行配置
+			 
+			 * 配置之后就不能修改了
+			 * */
+			var person2=new Object();//{}
+			person2.name="jack";
+			person2.age=20;
+			person2.isSingleDog=true;
+			Object.defineProperty( person2, 'age', {
+				configurable:false
+			});
+			person2.age=30;//这里我们修改属性看能否修改,结果是不能配置
+			for(var i in person){
+				print(i+": "+person[i]);
+			}
+			print("---------------------------");
+			
+			/*set和get的用法*/
+			var person3=new Object();//{}
+			person3.name="小明";
+			person3.birthdayYear=2000;
+			
+			Object.defineProperty(person3,"age",{
+				get:function(){
+					return 2016-this.birthdayYear;
+				},
+				set:function(value){
+					this.birthdayYear=2016-value;
+				}
+			})
+			
+			print("get方法得到年龄："+person3.age);
+			person3.age=20;
+			print("set方法得到出身年："+person3.birthdayYear);
+			
+			
+			
+			
+			
+			function print(msg){
+				document.write(msg);
+				document.write("<br />");
+			}
+		</script>
+	</body>
+</html>

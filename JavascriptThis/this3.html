@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对this2的第一次改装</title>
+	</head>
+	<body>
+		<script>
+			var data;
+			var util=new Util();
+			
+			util.process({
+				url:"www.wx.com",
+				callback:function(data){
+					this.data=data;
+				}
+			});
+			print("window:"+data);
+			print("util:"+util.data);
+			
+			
+			
+			function Util(){
+				//this.data="xxx";
+				this.process=function(obj){
+					if(obj.url="www.wx.com"){
+						obj.callback("这是阿星的网站");
+					}else{
+						obj.callback("no data");
+					}
+				}
+			}
+			
+			
+		
+			function print(msg){
+				document.write(msg);
+				document.write("<br />");
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

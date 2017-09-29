@@ -1,0 +1,42 @@
+@charset "utf-8";
+body{
+	margin: 100px;
+}
+div{
+	width: 200px;
+	height: 200px;
+	background-color: green;
+	box-shadow: 2px 2px 2px 2px gray;
+	/*平移*/
+	/*transform: translate(200px,200px);*/
+	/*transform: translate(0,200px);*/
+	/*transform: translateX(200px);*/
+	
+	/*缩放*/
+	/*transform: scale(0.5);*/
+	/*transform: scale(1.5);*/
+	/*transform: scale(0.5,1.5);*/
+	
+	
+	/*旋转*/
+	/*transform: rotate(45deg);*/
+	
+	/*倾斜*/
+	/*transform: skew(45deg,30deg);*/
+	
+	/*以基准点进行变形*/
+	/*transform: rotate(45deg);
+	transform-origin: left top;*/
+	
+	
+	/*兼容性*/
+	
+	
+	/*-webkit-transform:rotate(45deg) ;
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);*/
+	
+	
+	
+}
