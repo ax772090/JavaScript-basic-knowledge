@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>innerHTML&outHTML&innerText的区别</title>
+</head>
+<body>
+    <span id="outer" value="这是outer">
+        <span id="mid" value="这是mid">
+            <span id="inner" value="这是inner">text</span>
+            <input type="text" id="input" value="这是input的内容"/>
+        </span>
+    </span>
+<script>
+    /*innerHTML: 属性设置或返回表格行的开始和结束标签之间的 HTML。（也就数说，用innerHTML的元素必须是标签对的形式，也就是input啥都输不出来）。
+    outerHTML: 设置或获取对象及其内容的 HTML 形式。（标签对，input输出本身）
+    innerText： 设置或获取位于对象起始和结束标签内的文本。（标签对,input啥也输不出来）
+    value 这个用的地方比较多,这里仅以input中的value为例。就是input的值。(标签对,输出undefined)*/
+    var outer = document.getElementById('outer');
+    var mid = document.getElementById('mid');
+    var inner = document.getElementById('inner');
+    var input = document.getElementById('input');
+
+    console.log('outer的value是' + outer.value);
+    console.log('outer的innerHTML是' + outer.innerHTML);
+    console.log('outer的outerHTML是' + outer.outerHTML);
+    console.log('outer的innerText是' + outer.innerText);
+
+    console.log('  mid的innerHTML是' + mid.innerHTML);
+    console.log('  mid的outerHTML是' + mid.outerHTML);
+    console.log('  midr的innerText是' + mid.innerText);
+
+    console.log('inner的innerHTML是' + inner.innerHTML);
+    console.log('inner的outerHTML是' + inner.outerHTML);
+    console.log('inner的innerText是' + inner.innerText);
+
+    console.log('input的innerHTML是' + input.innerHTML);
+    console.log('input的outerHTML是' + input.outerHTML);
+    console.log('input的innerText是' + input.innerText);
+    console.log('input的value是 ' + input.value);
+</script>
+</body>
+</html>
