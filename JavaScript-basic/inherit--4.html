@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承的几种方式，以及优缺点</title>
+</head>
+<body>
+
+<script>
+    /*1、原型链继承
+    * 2、构造函数继承
+    * 3、组合继承
+    * 4、寄生组合继承*/
+
+    //    1、原型链继承
+    /*function Parent(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    Parent.prototype.getName = function () {
+        console.log(this.name)
+    }
+
+    function Child(sex) {
+        this.sex = sex;
+    }
+
+    Child.prototype = new Parent("wx", 27);
+    var child1 = new Child("男");
+    console.log(child1.getName());*/
+
+    //    问题1、来自原型对象的引用属性是所有实例共享的
+
+    /*function Parent() {
+        this.names = ['kevin', 'daisy'];
+    }
+
+    function Child() {
+
+    }
+
+    Child.prototype = new Parent();
+    var child1 = new Child();
+    child1.names.push('yayu');
+    console.log(child1.names); // ["kevin", "daisy", "yayu"]
+    var child2 = new Child();
+    console.log(child2.names); // ["kevin", "daisy", "yayu"]*/
+    /*分析：在Parent构造函数中定义了一个names属性，该属性是个数组（引用类型）。这样，当Child通过原型链继承Parent后，child所有实例都会共享
+    这个属性，所以导致修改某个实例child1的names属性，child2实例也会被修改*/
+    // 问题2、在创建Child实例时，不能向Parent传参
+
+    //    2、构造函数继承
+    /*优点：1、避免了引用属性被所有实例共享
+    *      2、可以在Child中向Parent传参*/
+    /*function Parent (name) {
+        this.name = name;
+        this.names=['kevin', 'daisy'];
+    }
+    Parent.prototype.getName=function () {
+        console.log(this.name);
+    };
+    Parent.prototype.type="人类";
+
+    function Child (name) {
+        Parent.call(this, name);
+    }
+
+    var child1 = new Child('kevin');
+    console.log(child1.name); // kevin
+    child1.names.push('wx');//["kevin", "daisy", "wx"]
+    console.log(child1.names); // kevin
+    /!*缺点：1、只能继承父类的属性和方法，不能继承原型上的属性和方法*!/
+    //console.log(child1.getName());// Uncaught TypeError: child1.getName is not a function
+    //console.log(child1.type);//undefined
+
+    var child2 = new Child('daisy');
+    console.log(child2.name); // daisy
+    child2.names.push('wyc');//["kevin", "daisy", "wyc"]
+    console.log(child2.names);*/
+
+    //    3、组合继承
+    /*使用原型链实现对原型属性和方法的继承，通过构造函数实现对实例属性和方法的继承*/
+    /*缺点：调用了两次构造函数，生成了两份实例（子类实例将子类原型上的那份屏蔽了）
+    * 一次是设置子类型实例的原型的时候：Child.prototype = new Parent();
+    * 一次在创建子类型实例的时候：var child1 = new Child('kevin', '18');*/
+    /*function Parent (name) {
+        this.name = name;
+        this.colors = ['red', 'blue', 'green'];
+    }
+
+    Parent.prototype.getName = function () {
+        console.log(this.name)
+    }
+
+    function Child (name, age) {
+        Parent.call(this, name);//第二次调用构造函数
+        this.age = age;
+    }
+
+    Child.prototype = new Parent();//第一次调用构造函数
+    Child.prototype.constructor = Child;
+    /!*理解上面这句：1、任何一个prototype对象都有一个constructor属性，指向它的构造函数
+    如果没有Child.prototype=new Parent()这一行，Child.prototype.constructor是指向Child的；
+    加了这一行以后，Child.prototype.constructor指向Parent。即：Child.prototype.constructor == Parent
+                 2、每一个实例也有一个constructor属性，默认调用prototype对象的constructor属性
+                 即：child1.constructor == Child.prototype.constructor
+                 3、最后，child1.constructor == Parent 这显然会导致继承链的紊乱*!/
+    /!*这点相当重要，如果替换了prototype对象，则必然给新的prototype对象加上constructor属性，并将这个属性指向原来的构造函数
+    *即：o.prototype={};
+    * o.prototype.constructor=o; *!/
+
+    var child1 = new Child('kevin', '18');
+
+    child1.colors.push('black');
+
+    console.log(child1.name); // kevin
+    console.log(child1.age); // 18
+    console.log(child1.colors); // ["red", "blue", "green", "black"]
+
+    var child2 = new Child('daisy', '20');
+
+    console.log(child2.name); // daisy
+    console.log(child2.age); // 20
+    console.log(child2.colors); // ["red", "blue", "green"]*/
+
+    //    4、寄生组合继承
+    /*通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免的组合继承的缺点*/
+    function Parent(name) {
+        this.name = name;
+        this.colors = ['red', 'blue', 'green'];
+    }
+
+    Parent.prototype.getName = function () {
+        console.log(this.name)
+    }
+
+    function Child(name, age) {
+        Parent.call(this, name);
+        this.age = age;
+    }
+
+    Child.prototype = Object.create(Parent.prototype);//这里是精髓：该方法会对传入的对象进行浅拷贝，类似下面这样：
+
+    /* function create(obj){
+         function F() {}
+         F.prototype=obj;
+         return new F();
+     }*/
+
+    Child.prototype.constructor = Child;
+
+    var child1 = new Child('wx', 18);
+    console.log(child1);
+
+    //    最后这个是封装的一个继承方法
+    /*  function object(o) {
+          function F() {}
+          F.prototype = o;
+          return new F();
+      }
+
+      function prototype(child, parent) {
+          var prototype = object(parent.prototype);
+          prototype.constructor = child;
+          child.prototype = prototype;
+      }
+
+      // 当我们使用的时候：
+      prototype(Child, Parent);*/
+
+
+</script>
+
+</body>
+</html>

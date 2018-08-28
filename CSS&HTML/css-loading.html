@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css实现加载中效果</title>
+    <style>
+        @keyframes loading {
+         0% {
+             transform: rotate(0deg);
+         }
+        100% {
+            transform: rotate(360deg);
+        }
+        }
+        div{
+            width:150px;
+            height: 150px;
+            border-top: 30px solid #FFFFFF;
+            border-left: 30px solid #53d52b;
+            border-right: 30px solid #53d52b;
+            border-bottom: 30px solid #53d52b;
+            border-radius: 50%;
+            animation: loading 5s infinite;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+
+</body>
+</html>
