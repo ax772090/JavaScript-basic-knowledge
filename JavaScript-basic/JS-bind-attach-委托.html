@@ -10,22 +10,22 @@
 			1、在DOM元素中直接绑定；
 			2、在JavaScript代码中绑定；
 			3、绑定事件监听函数。-->
-		
+
 		<!--<input type="button" value="click me" onclick="hello()">
 		<script>
 		function hello(){
 		 alert("hello world!");
 		}
 		</script>-->
-		
+
 		<!--<input type="button" value="click me" id="btn">
- 
+
 		<script>
 		document.getElementById("btn").onclick = function(){
 		 alert("hello world!");
 		}
 		</script>-->
-		
+
 		<!--事件监听-->
 		<!--
 			1、语法：
@@ -40,20 +40,20 @@
 		 alert("hello world!");
 		}
 		</script>-->
-		
+
 		<!--2、语法：
 		element.attachEvent(event, function)
 		event：（必需）事件类型。需加“on“，例如：onclick。
 		function：（必需）指定要事件触发时执行的函数-->
 		<!--<input type="button" value="click me" id="btn2">
- 
+
 		<script>
 		document.getElementById("btn2").attachEvent("onclick",hello);
 		function hello(){
 		 alert("hello world!");
 		}
 		</script>-->
-		
+
 		<!--事件委托-->
 		<!--就是利用冒泡原理，把事件加到父元素或者祖先元素上触发效果-->
 		<!--1、传统写法-->
@@ -62,12 +62,12 @@
 			 <li id="item2" >item2</li>
 			 <li id="item3" >item3</li>
 			</ul>
-			 
+
 			<script>
 			var item1 = document.getElementById("item1");
 			var item2 = document.getElementById("item2");
 			var item3 = document.getElementById("item3");
-			 
+
 			item1.onclick = function(){
 			 alert("hello item1");
 			}
@@ -79,7 +79,7 @@
 			}
 			</script>-->
 		<!--2、事件委托：优点：1、提高JavaScript性能。事件委托可以显著的提高事件的处理速度，减少内存的占用
-						  
+
 		-->
 			<!--<ul id="list">
 			 <li id="item1" >item1</li>
@@ -113,10 +113,10 @@
 				 <li id="item2" >item2</li>
 				 <li id="item3" >item3</li>
 				</ul>
-				 
+
 				<script>
 				var list = document.getElementById("list");
-				 
+
 				var item = list.getElementsByTagName("li");
 				for(var i=0;i<item.length;i++){
 				 (function(i){
@@ -125,35 +125,53 @@
 				 }
 				 })(i);
 				}
-				 
+
 				var node=document.createElement("li");
 				var textnode=document.createTextNode("item4");
 				node.appendChild(textnode);
 				list.appendChild(node);
-				 
+
 				</script>-->
 			<!--事件委托-->
-			<ul id="list">
-			 <li id="item1" >item1</li>
-			 <li id="item2" >item2</li>
-			 <li id="item3" >item3</li>
-			</ul>
-			 
-			<script>
-			var list = document.getElementById("list");
-			 
-			document.addEventListener("click",function(event){
-			 var target = event.target;
-			 if(target.nodeName == "LI"){//必须是大写哦***************
-			 alert(target.innerHTML);
-			 }
-			})
-			 
-			var node=document.createElement("li");
-			var textnode=document.createTextNode("item4");
-			node.appendChild(textnode);
-			list.appendChild(node);
-			 
-			</script>
+        <ul id="list">
+            <li id="item1">item1</li>
+            <li id="item2">item2</li>
+            <li id="item3">item3</li>
+        </ul>
+
+        <script>
+            var list = document.getElementById("list");
+
+            document.addEventListener("click", function (event) {
+                var target = event.target;
+                if (target.nodeName == "LI") {//必须是大写哦***************
+                    alert(target.innerHTML);
+                }
+            })
+
+            var node = document.createElement("li");
+            var textnode = document.createTextNode("item4");
+            node.appendChild(textnode);
+            list.appendChild(node);
+
+        </script>
+
+<!--实现点击input输入框，判断当前点击的是第几个-->
+        <!--<form id="form">
+            <input type="text" name="1" value="1">
+            <input type="text" name="2" value="2">
+            <input type="text" name="3" value="3">
+            <input type="submit">
+        </form>
+        <script>
+            var inputList = document.getElementById('form');
+            inputList.addEventListener('click', function (e) {
+                var target = e.target;
+                if (target.type === "text") {
+                    alert("当前点击的是第" + target.value + "个输入框");
+                }
+
+            })
+        </script>-->
 	</body>
 </html>
