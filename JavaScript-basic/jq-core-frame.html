@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的简单架构</title>
+</head>
+<body>
+<script>
+    /*于是jQuery( )的构造原理就很清晰了：每次调用jQuery( )都返回由构造函数init指定返回的this对象，
+    而this对象已经被赋值为那个新创建的空对象。由于把jQuery.prototype都赋给了init.prototype，
+    所以新创建的空对象继承所有jQuery的方法。*/
+    /*通过init作为中转站，最终return出了一个jQuery实例*/
+    (function () {
+        var jQuery = window.jQuery = function () {
+            return new jQuery.prototype.init(selector, context);
+        }
+        jQuery.fn = jQuery.prototype = {
+            init: function (selector, context) {
+                return this;
+            },
+            name:'jQuery'
+        }
+        jQuery.prototype.init.prototype = jQuery.prototype;
+    })();
+</script>
+</body>
+</html>

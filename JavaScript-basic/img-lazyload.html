@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>懒加载技术</title>
+    <style>
+        li {
+            width: 300px;
+            height: 400px;
+        }
+
+        li img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        window.onload = function () {
+
+            var lazyLoad = (function () {
+                var timer = 0;
+
+                function init() {
+                    $(window).on('scroll', function () {
+                        timer && clearTimeout(timer);
+                        timer = setTimeout(function () {
+                            console.log('scroll')
+                            showImage();
+                        }, 200)
+                    });
+                    showImage();
+                }
+
+                function showImage() {
+                    $('img').each(function () {
+                        var current = $(this);
+                        if (current.attr('isLoaded')) return;
+                        shouldShow(current) && showImg(current);
+                    })
+                }
+
+                function shouldShow(node) {
+                    var scrollH = $(window).scrollTop(),
+                        winH = $(window).height(),
+                        top = node.offset().top;
+                    if (top < winH + scrollH) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+                function showImg(node) {
+                    node.attr('src', node.attr('data-src'));
+                    node.attr('isLoaded', true);
+                }
+
+                return {
+                    init: init
+                }
+
+            })();
+
+            lazyLoad.init();
+        };
+    </script>
+
+</head>
+<body>
+<ul>
+    <li>
+        <img
+                data-src="https://img11.360buyimg.com/babel/s700x360_jfs/t17803/198/955524217/34057/c1046b73/5ab469d6Nb7738eba.jpg!q90!cc_350x180"
+                src="https://img10.360buyimg.com/babel/s340x420_jfs/t17560/109/1280106391/43247/e6499029/5ac48cf1N6ae7ba3a.jpg!q90!cc_340x420"
+                alt=""
+        >
+    </li>
+    <li>
+        <img
+                data-src="https://img11.360buyimg.com/babel/s700x360_jfs/t17803/198/955524217/34057/c1046b73/5ab469d6Nb7738eba.jpg!q90!cc_350x180"
+                src="https://img10.360buyimg.com/babel/s340x420_jfs/t17560/109/1280106391/43247/e6499029/5ac48cf1N6ae7ba3a.jpg!q90!cc_340x420"
+                alt=""
+        >
+    </li>
+    <li>
+        <img
+                data-src="https://img11.360buyimg.com/babel/s700x360_jfs/t17803/198/955524217/34057/c1046b73/5ab469d6Nb7738eba.jpg!q90!cc_350x180"
+                src="https://img10.360buyimg.com/babel/s340x420_jfs/t17560/109/1280106391/43247/e6499029/5ac48cf1N6ae7ba3a.jpg!q90!cc_340x420"
+                alt=""
+        >
+    </li>
+    <li>
+        <img
+                data-src="https://img11.360buyimg.com/babel/s700x360_jfs/t17803/198/955524217/34057/c1046b73/5ab469d6Nb7738eba.jpg!q90!cc_350x180"
+                src="https://img10.360buyimg.com/babel/s340x420_jfs/t17560/109/1280106391/43247/e6499029/5ac48cf1N6ae7ba3a.jpg!q90!cc_340x420"
+                alt=""
+        >
+    </li>
+    <li>
+        <img
+                data-src="https://img11.360buyimg.com/babel/s700x360_jfs/t17803/198/955524217/34057/c1046b73/5ab469d6Nb7738eba.jpg!q90!cc_350x180"
+                src="https://img10.360buyimg.com/babel/s340x420_jfs/t17560/109/1280106391/43247/e6499029/5ac48cf1N6ae7ba3a.jpg!q90!cc_340x420"
+                alt=""
+        >
+    </li>
+    <li>
+        <img
+                data-src="https://img11.360buyimg.com/babel/s700x360_jfs/t17803/198/955524217/34057/c1046b73/5ab469d6Nb7738eba.jpg!q90!cc_350x180"
+                src="https://img10.360buyimg.com/babel/s340x420_jfs/t17560/109/1280106391/43247/e6499029/5ac48cf1N6ae7ba3a.jpg!q90!cc_340x420"
+                alt=""
+        >
+    </li>
+    <li>
+        <img
+                data-src="https://img11.360buyimg.com/babel/s700x360_jfs/t17803/198/955524217/34057/c1046b73/5ab469d6Nb7738eba.jpg!q90!cc_350x180"
+                src="https://img10.360buyimg.com/babel/s340x420_jfs/t17560/109/1280106391/43247/e6499029/5ac48cf1N6ae7ba3a.jpg!q90!cc_340x420"
+                alt=""
+        >
+    </li>
+    <li>
+        <img
+                data-src="https://img11.360buyimg.com/babel/s700x360_jfs/t17803/198/955524217/34057/c1046b73/5ab469d6Nb7738eba.jpg!q90!cc_350x180"
+                src="https://img10.360buyimg.com/babel/s340x420_jfs/t17560/109/1280106391/43247/e6499029/5ac48cf1N6ae7ba3a.jpg!q90!cc_340x420"
+                alt=""
+        >
+    </li>
+    <li>
+        <img
+                data-src="https://img11.360buyimg.com/babel/s700x360_jfs/t17803/198/955524217/34057/c1046b73/5ab469d6Nb7738eba.jpg!q90!cc_350x180"
+                src="https://img10.360buyimg.com/babel/s340x420_jfs/t17560/109/1280106391/43247/e6499029/5ac48cf1N6ae7ba3a.jpg!q90!cc_340x420"
+                alt=""
+        >
+    </li>
+    <li>
+        <img
+                data-src="https://img11.360buyimg.com/babel/s700x360_jfs/t17803/198/955524217/34057/c1046b73/5ab469d6Nb7738eba.jpg!q90!cc_350x180"
+                src="https://img10.360buyimg.com/babel/s340x420_jfs/t17560/109/1280106391/43247/e6499029/5ac48cf1N6ae7ba3a.jpg!q90!cc_340x420"
+                alt=""
+        >
+    </li>
+</ul>
+</body>
+</html>

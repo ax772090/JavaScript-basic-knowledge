@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DomContentLoaded事件和load事件</title>
+</head>
+<body>
+<div>
+    <label for="name">name:</label>
+    <input type="text">
+    <label for="password">password:</label>
+    <input type="password">
+    <button type="submit">提交</button>
+
+    <img src="./img/HBuilder.png" alt="">
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function (e) {
+            console.log('DOM已经生成，可能外部资源还没有下载完，在load事件之前发生')
+        }, false);
+        window.addEventListener('load', function (e) {
+            console.log('所有资源已经加载完毕')
+        }, false)
+    </script>
+
+</div>
+
+</body>
+</html>
