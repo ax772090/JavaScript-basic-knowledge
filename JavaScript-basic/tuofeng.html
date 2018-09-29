@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串按照驼峰形式展示</title>
+</head>
+<body>
+<script>
+    function tf(str) {
+        var arrTmp = str.split("-");// ["get", "element", "by", "id"]
+        for (var i = 1; i < arrTmp.length; i++) {
+            arrTmp[i] = arrTmp[i].charAt(0).toUpperCase() + arrTmp[i].substring(1);
+        }
+        return arrTmp.join('');
+    }
+    var str = "get-element-by-id";
+    console.log(tf(str));
+</script>
+</body>
+</html>

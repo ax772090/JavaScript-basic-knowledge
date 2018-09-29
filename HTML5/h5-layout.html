@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>布局</title>
+    <style>
+        header {
+            width: 1000px;
+            height: 120px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+
+        nav {
+            width: 1000px;
+            height: 60px;
+            background-color: #2aabd2;
+            margin: 0 auto;
+        }
+
+        section {
+            width: 1000px;
+            height: 400px;
+            background-color: #CCCCCC;
+            margin: 0 auto;
+        }
+
+        aside {
+            float: left;
+            width: 400px;
+            height: 400px;
+            background-color: #CCCCee;
+        }
+
+        article {
+            float: right;
+            width: 600px;
+            height: 400px;
+            background-color: #449d44;
+        }
+
+        footer {
+            width: 1000px;
+            height: 90px;
+            background-color: #c9302c;
+            margin: 0 auto;
+        }
+
+        .page {
+            position: relative;
+        }
+
+        .page .side {
+            position: absolute;
+            left: 0;
+            width: 700px;
+            height: 500px;
+            background-color: #c9302c;
+        }
+
+        .page .main {
+            margin-left: 300px;
+            height: 500px;
+            background-color: gray;
+        }
+
+        #content {
+            position: relative;
+        }
+
+        .sub1, .extra1 {
+            position: absolute;
+            width: 200px;
+            top: 0;
+            background-color: #c9302c;
+        }
+
+        .sub1 {
+            left: 0;
+        }
+
+        .extra1 {
+            right: 0;
+        }
+
+        .main1 {
+            margin: 0 200px;
+            background-color: #449d44;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+            background: red;
+            height: 200px;
+            margin-bottom: -200px;
+            position: relative;
+        }
+
+        .content {
+            background: blue;
+            height: 100%;
+           /* padding: 200px 0 100px 0;*/
+        }
+
+        .footer {
+            background: green;
+            height: 100px;
+            margin-top: -100px;
+        }
+    </style>
+</head>
+<body>
+<!--<header>头部</header>
+<nav>导航</nav>
+<section>
+    <aside>左侧</aside>
+    <article>右侧</article>
+</section>
+<footer>底部</footer>-->
+
+<!--双列布局-->
+<!--<div class="page">
+    <div class="side">左边固定</div>
+    <div class="main">右侧自适应</div>
+</div>-->
+<!--三列布局-->
+<!--<div id="content">
+    　　　　
+    <div class="sub1">sub</div>
+    　　　　
+    <div class="main1">main</div>
+    　　　　
+    <div class="extra1">extra</div>
+    　　
+</div>-->
+<div class="header"></div>
+<div class="content"></div>
+<div class="footer"></div>
+</body>
+</html>

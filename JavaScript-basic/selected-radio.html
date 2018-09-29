@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>提示当前选中的是第几个单选框</title>
+</head>
+<body>
+<form action="" name="form1" onsubmit="foo();">
+    <input type="radio" name="radioGroup">
+    <input type="radio" name="radioGroup">
+    <input type="radio" name="radioGroup">
+    <input type="radio" name="radioGroup">
+    <input type="radio" name="radioGroup">
+    <input type="submit">
+</form>
+<script>
+    function foo() {
+        var radioList = document.form1.radioGroup;
+
+        for (let i = 0; i < radioList.length; i++) {
+            if (radioList[i].checked) {
+                alert("您选择的是第" + (i + 1) + "单选框")
+            }
+
+        }
+    }
+</script>
+</body>
+</html>

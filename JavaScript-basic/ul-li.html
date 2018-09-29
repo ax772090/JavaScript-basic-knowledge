@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击某个li显示它的索引</title>
+</head>
+<body>
+<ul>
+    <li>我是第一个</li>
+    <li>我是第二个</li>
+    <li>我是第三个</li>
+</ul>
+<script>
+    <!--第一种方式-->
+    /*var liList=document.getElementsByTagName('li');
+    for (var i = 0; i < liList.length; i++) {
+        liList[i].index=i;
+        liList[i].onclick=function () {
+            alert("我是第"+(this.index+1)+"个li");
+        }
+    }*/
+    //第二种:闭包
+    var liList=document.getElementsByTagName('li');
+    for (var i = 0; i < liList.length; i++) {
+        liList[i].onclick=(function (n) {
+            return function () {
+                alert("我是第"+(n+1)+"个li");
+            }
+        })(i)
+    }
+    //第三种种:自执行函数
+    /*var liList=document.getElementsByTagName('li');
+    for (var i = 0; i < liList.length; i++) {
+        (function(n){
+            liList[n].onclick=function () {
+                alert("我是第"+(n+1)+"个li");
+            }
+        })(i)
+    }*/
+</script>
+</body>
+</html>

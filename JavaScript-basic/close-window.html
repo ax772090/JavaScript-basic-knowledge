@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>关闭当前窗口</title>
+</head>
+<body>
+    <input type="button" value="关闭当前窗口" onclick="closeWin()">
+    <script>
+        function closeWin(){
+            if(confirm("您确定要关闭本页吗？")){
+                window.close();
+            }
+        }
+    </script>
+</body>
+</html>

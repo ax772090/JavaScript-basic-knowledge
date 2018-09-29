@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽奖及css3动画</title>
+    <style>
+        section {
+            width: 100%;
+            position: relative;
+        }
+
+        .two {
+            position: absolute;
+            left: 128px;
+            top: 120px;
+        }
+
+
+        .one {
+            transform: rotate(360deg);
+            animation: rotation 3s linear 2s 1;
+        }
+        @keyframes rotation
+        {
+            from {transform: rotate(0deg)}
+            to {transform: rotate(360deg)}
+        }
+        .pause{
+            animation-play-state: paused;
+        }
+
+    </style>
+</head>
+<body>
+<!--进入界面后2s开始旋转抽奖,3s后停止-->
+<section>
+    <img src="./img/01.png" class="one">
+    <img src="./img/02.png" class="two">
+</section>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    setTimeout(function () {
+        $(".one").addClass("pause");
+    }, 3000)
+</script>
+</body>
+</html>

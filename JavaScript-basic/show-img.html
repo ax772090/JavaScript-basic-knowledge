@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>根据下拉列表的选项变化，更新图片的显示</title>
+</head>
+<body>
+<img src="./img/img1.png" id="pic">
+<br>
+<select onchange="showImg(this)">
+    <option value="img1">aa</option>
+    <option value="img2">bb</option>
+    <option value="img3">cc</option>
+</select>
+<script>
+    function showImg(sel) {
+        document.getElementById("pic").src="./img/"+sel.value+".png"
+    }
+</script>
+
+</body>
+</html>

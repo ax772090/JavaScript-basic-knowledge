@@ -1,24 +1,77 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>css的水平居中和垂直居中</title>
-		<link rel="stylesheet" href="css/index.css"/>
-	</head>
-	<body>
-		<!--行内元素水平居中-->
-		<span class="test1">行内元素水平居中</span>
-		<b class="test2">行内元素垂直居中</b><br />
-		<b class="test3">行内元素垂直居中+水平居中</b>
-		
-		<!--块级元素水平居中-->
-		<div id="test4">块级元素水平居中</div>
-		<div id="test5">块级元素水平居中</div>
-		<!--块级元素垂直居中-->
-		
-		<div id="test6">块级元素垂直居中</div>
-		<!--<div id="test7">块级元素垂直居中</div>-->
-		
-		
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <title>css的水平居中和垂直居中</title>
+    <!--<link rel="stylesheet" href="css/index.css"/>-->
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .test1 {
+
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .test2 {
+            height: 130px;
+            line-height: 130px;
+            background-color: silver;
+        }
+
+        .test3 {
+            display: flex;
+            justify-content: center;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        #test4 {
+            /*text-align: center;*/
+            width: 120px;
+            margin: 0 auto;
+            background-color: silver;
+
+        }
+
+        #test5 {
+            position: relative;
+            left: 50%;
+        }
+
+        #test6 {
+            margin: 0 auto;
+            height: 130px;
+            line-height: 130px;
+            background-color: silver;
+
+        }
+        #test7{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+<!--行内元素水平居中-->
+<span class="test1">行内元素水平居中</span>
+<b class="test2">行内元素垂直居中</b><br/>
+<b class="test3">行内元素垂直居中+水平居中</b>
+
+<!--块级元素水平居中-->
+<div id="test4">块级元素水平居中</div>
+<div id="test5">块级元素水平居中</div>
+<!--块级元素垂直居中-->
+
+<div id="test6">块级元素垂直居中</div>
+<div id="test7">块级元素水平+垂直居中7</div>
+
+
+</body>
 </html>
