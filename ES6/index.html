@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6相关知识</title>
+</head>
+<body>
+
+<script>
+    <!--变量声明const和let-->
+    /*
+    * 1、let的作用域在当前的代码块，但是不会被提升到最顶部
+    * 2、如果const声明的是一个基本数据类型的变量，会被认为是一个常量，不容许修改；
+    * 如果声明的是一个对象，那么对象的属性的值是可以被修改的
+    * */
+    function aa() {
+        if (flag) {
+            let test = 'hello man'
+        } else {
+            //test 在此处访问不到
+            console.log(test)
+        }
+    }
+
+    const name = 'lux'
+    //name = 'joe' // 再次赋值此时会报错
+    const student = {name: 'cc'}
+    // 没毛病
+    student.name = 'yy'
+    // 如果这样子就会报错了
+    //student  = { name: 'yy' }
+    const funcs = []
+    for (let i = 0; i < 10; i++) {
+        funcs.push(function () {
+            console.log(i)
+        })
+    }
+    funcs.forEach(func => func());
+
+    // 字符串
+    //    ES5
+    var name1 = 'wx'
+    console.log("Hello " + name1);
+    //    ES6
+    const name2 = 'wyc';
+    console.log(`Hello ${name2}`);
+    // 1、includes:判断是否包含，然后直接返回布尔型
+    const str = "wxfjksdljfk";
+    console.log(str.includes('x'));//true
+    // 2.repeat: 获取字符串重复n次
+    //如果你带入小数, Math.floor(num) 来处理
+    // s.repeat(3.1) 或者 s.repeat(3.9) 都当做成 s.repeat(3) 来处理
+    const str1 = 'he'
+    console.log(str1.repeat(3)) // 'hehehe'
+    //    3、startWith和endWith判断是否以给定的文本开始、结束
+    const str2 = "hello world!"
+    console.log(str2.startsWith('he'))
+    console.log(str2.endsWith('!'))
+    //    4、padStart和padEnd 填充字符串，应用场景：时分秒
+    /*setInterval(()=>{
+        const now=new Date();
+        const hours = now.getHours().toString()
+        const minutes = now.getMinutes().toString()
+        const seconds = now.getSeconds().toString()
+
+        console.log(`${hours.padStart(2,'0')}:${minutes.padStart(2,'0')}:${seconds.padStart(2,'0')}`)
+    },1000)*/
+
+    //面试题
+    let address = '北京海淀区'
+    let name3 = 'lala'
+    let str3 = '${name3}在${address}上班...'
+
+    // 模拟一个方法 myTemplate(str) 最终输出 'lala在北京海淀区上班...'
+    function myTemplate(str) {
+        // try it
+        return str.replace(/\$\{([^}]+)\}/g, (matched, childItem) => {
+            return eval(childItem)
+        })
+    }
+
+    console.log(myTemplate(str3))
+
+    //函数默认参数
+    function action(num) {
+        num = num || 200
+        return num;
+    }
+
+    console.log(action(0))//200,传入的0被当做false了
+    //    es6
+    function action1(num = 200) {
+        return num;
+    }
+
+    console.log(action1(0))//0
+    console.log(action1())//200
+    console.log(action1(300))//300
+    //    对象的扩展
+    //     es5
+    const people = {
+        name: 'wx',
+        getName: function () {
+            console.log(this.name)
+        }
+    }
+    //    es6
+    const people1 = {
+        name: 'wx',
+        getName() {
+            console.log(this.name)
+        }
+    }
+    // ES6的Object.assign()可以实现浅copy
+    const objA = {name: 'cc', age: 18}
+    const objB = {address: 'beijing'}
+    const obj = Object.assign({}, objA, objB)
+
+    console.log(objA)//{name: "cc", age: 18}
+    console.log(objB)//{address: "beijing"}
+    console.log(obj)//{name: "cc", age: 18, address: "beijing"}
+
+    //    对象和数组的解构
+    const people2 = {
+        name_wx: 'wx',
+        age_wx: 20
+    }
+    const {name_wx, age_wx} = people2//里面的名称必须和对象里面的一样，这里不是别名
+    console.log(`${name_wx}-----${age_wx}`)
+
+    const color = ['red', 'blue']
+    const [first, second] = color
+    console.log(first)
+    console.log(second)
+    //面试题
+    //    使用ES6重构
+    var body = request.body
+    var username = body.username
+    var password = body.password
+
+    const {body, body: {username, password}} = request;
+
+//    扩展运算符...
+
+</script>
+</body>
+</html>
