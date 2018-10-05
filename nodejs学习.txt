@@ -1,0 +1,46 @@
+1、更新npm
+npm i npm -g 或者npm install npm@latest -g
+2、npm有些比较慢，需要换成nrm
+npm i nrm -g
+3、查看当前nrm使用的registry
+nrm ls
+4、切换当前使用的nrm为淘宝的
+nrm use taobao
+5、cnpm代替npm
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+6、npm版本降级
+npm i -g npm@5.6.0
+7、别人在局域网里面访问
+ng serve --host xxx.xxx.x.xxx（自己的ip地址）
+8、安装
+npm install xxx --save          //保存到dependencies（生产）
+npm install xxx --save-dev      //保存到devDependencies（开发）
+9、安装express框架
+cnpm i -g express-generator
+express --version
+express server
+10、启动MongoDB数据库
+mongod -f mongod.conf(这里是该文件的路径)
+node 可执行文件
+node server/bin/www
+
+11、MongoDB数据库操作命令
+找到D:\Program Files\MongoDB\Server\4.0\bin下面的mongo.exe可执行文件
+
+show dbs;                  #查看全部数据库
+show collections;          #显示当前数据库中的集合（类似关系数据库中的表）
+show users;                #查看当前数据库的用户信息
+use <db name>;             #切换数据库跟mysql一样
+db;或者db.getName();        #查看当前所在数据库
+db.help();                 #显示数据库操作命令，里面有很多的命令 
+db.foo.help();             #显示集合操作命令，同样有很多的命令，foo指的是当前数据库下，一个叫foo的集合，并非真正意义上的命令 
+db.foo.find();             #对于当前数据库中的foo集合进行数据查找（由于没有条件，会列出所有数据） 
+db.foo.find( { a : 1 } );  #对于当前数据库中的foo集合进行查找，条件是数据中有一个属性叫a，且a的值为1
+db.test.insert([])         #批量往test集合里面插入数据，数组里面就是很多对象
+12、卸载插件
+cnpm uninstall webpack --save-dev
+cnpm i webpack@^2.0.0  表示安装2.0.0以上3.0.0以下的最高版本
+13、npm发布插件
+npm adduser
+npm publish
+
