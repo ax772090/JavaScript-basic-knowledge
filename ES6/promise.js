@@ -39,3 +39,34 @@ p2.then((result) => {
 }).catch(error => {
   console.log(error)
 })
+
+/* 采用链式的then，可以指定一组按照次序调用的回调函数。第一个then方法指定的回调函数，返回的是另一个Promise对象。这时，第二个then方法指定的回调函数，就会等待这个新的Promise对象状态发生变化。如果变为resolved，就调用funcA，如果状态变为rejected，就调用funcB */
+getJSON('"/post/1.json"').then((post) => {
+  return getJSON(post.commentURL)
+}).then(
+  comments => console.log("resolved: ", comments),
+  err => console.log("rejected: ", err)
+)
+
+/* 一般来说，不要在then方法里面定义 Reject 状态的回调函数（即then的第二个参数），总是使用catch方法。因此，建议总是使用catch方法，而不使用then方法的第二个参数。*/
+// bad
+promise.then((data) => {
+  // success
+}, (error) => {
+  // error
+})
+// good
+promise.then((data) => {
+  // success
+}).catch((error) => {
+  // error
+})
+
+/* Promise.try()方法可以使同步函数同步执行，异步函数异步执行，并且让它们具有统一的 API */
+Promise.try(()=>{
+  
+}).then(()=>{
+
+}).catch(()=>{
+
+})
